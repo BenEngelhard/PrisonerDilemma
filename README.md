@@ -12,10 +12,12 @@ git clone --recurse-submodules https://github.com/BenEngelhard/PrisonerDilemma.g
    
 git submodule update --init --recursive
 
-4. Synchronizing the main repo with the submodule changes
+3. Synchronizing the main repo with the submodule changes
 
    
 After pushing submodule changes, go back to the main repo root and update the submodule pointer
+
+
 git add infrastructure
 git commit -m "Update infrastructure version"
 git push
