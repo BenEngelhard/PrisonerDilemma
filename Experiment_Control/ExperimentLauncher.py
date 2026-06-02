@@ -1,18 +1,18 @@
-from Experiment_Launcher_code.ModuleConfiguration import __USE_VIDEO_SIM
-from Experiment_Launcher_code.ModuleConfiguration import __SOFTWARE_VERSION
+from infrastructure.ModuleConfiguration import __USE_VIDEO_SIM
+from infrastructure.ModuleConfiguration import __SOFTWARE_VERSION
 
 if __USE_VIDEO_SIM:
-    from Video_analyser_code.VideoAnalyzerSim import Video_Analyzer
+    from infrastructure.Video_analyser_code.VideoAnalyzerSim import Video_Analyzer
 else:
-    from Video_analyser_code.VideoAnalyser import Video_Analyzer
+    from infrastructure.Video_analyser_code.VideoAnalyser import Video_Analyzer
 
-from modelling_opponent.MouseMonitor import MouseMonitor
-from modelling_opponent.FixedStrategyPrisoner import FixedStrategyPrisoner
-from Reward_manager.RewardManager import RewardManager
-from Experiment_Launcher_code.ExperimentManager import ExperimentManager
-from Experiment_Launcher_code.experimentgui import ExperimentGUI, OpponentType
-from Arduino_related_code.HWConfiguration import HWConfGUI
-import Data_analysis.FileUtilities as fUtile
+from Experiment_Control.MouseMonitor import MouseMonitor
+from Experiment_Control.FixedStrategyPrisoner import FixedStrategyPrisoner
+from Experiment_Control.RewardManager import RewardManager
+from Experiment_Control.ExperimentManager import ExperimentManager
+from Experiment_Control.experimentgui import ExperimentGUI, OpponentType
+from Experiment_Control.HWConfiguration import HWConfGUI
+import infrastructure.Data_analysis.FileUtilities as fUtile
 
 def main():
     gui_terminated = False

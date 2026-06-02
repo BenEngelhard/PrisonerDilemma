@@ -1,16 +1,16 @@
-from Experiment_Launcher_code.ModuleConfiguration import __USE_ARDUINO_SIM
+from infrastructure.ModuleConfiguration import __USE_ARDUINO_SIM
 
 if __USE_ARDUINO_SIM:
-    import Arduino_related_code.ArduinoDigitalSim as Arduino
+    import infrastructure.Arduino_related_code.ArduinoDigitalSim as Arduino
 else:
-    import Arduino_related_code.ArduinoDigital as Arduino
+    import infrastructure.Arduino_related_code.ArduinoDigital as Arduino
 
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
-import Data_analysis.FileUtilities as fUtile
+import infrastructure.Data_analysis.FileUtilities as fUtile
 
-from Arduino_related_code.ValveControl import ValveControl
+from infrastructure.Arduino_related_code.ValveControl import ValveControl
 
 class MouseReward:
     def __init__(self):

@@ -1,14 +1,14 @@
-from Sound_manager_code.SoundManager import Play, Sounds
-from modelling_opponent.MouseMonitor import Locations
-from State_manager_code.StateManager import StateManager
-from State_manager_code.StateManager import States
-from State_manager_code.StateManager import Events
-from Data_analysis.logger import TrialLogger
-from Data_analysis.event_logger import EventLogger
-from Experiment_Launcher_code.RunTimeGui import RunTimeGUI
-import Data_analysis.CodeProfiler as Profiler
-from Data_analysis.RunTimeAnalysis import RunTimeAnalysis
-from Data_analysis.HeartBeat import HeartBeat
+from Experiment_Control.SoundManager import Play, Sounds
+from infrastructure.Video_analyser_code.locations import Locations
+from infrastructure.State_manager_code.StateManager import StateManager
+from infrastructure.State_manager_code.StateManager import States
+from infrastructure.State_manager_code.StateManager import Events
+from Experiment_Control.TrialLogger import TrialLogger
+from Experiment_Control.event_logger import EventLogger
+from Experiment_Control.RunTimeGui import RunTimeGUI
+import infrastructure.Data_analysis.CodeProfiler as Profiler
+from Experiment_Control.RunTimeAnalysis import RunTimeAnalysis
+from infrastructure.Data_analysis.HeartBeat import HeartBeat
 import time
 
 

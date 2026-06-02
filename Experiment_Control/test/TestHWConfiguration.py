@@ -1,4 +1,4 @@
-from Arduino_related_code.HWConfiguration import HWConfGUI
+from Experiment_Control.HWConfiguration import HWConfGUI
 
 # main program
 w = HWConfGUI()

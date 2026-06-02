@@ -1,5 +1,5 @@
-from Video_analyser_code.locations import Locations
-from modelling_opponent.PrisonerABC import Prisoner
+from infrastructure.Video_analyser_code.locations import Locations
+from Experiment_Control.PrisonerABC import Prisoner
 
 class MouseMonitor(Prisoner):
     def __init__(self, mouse_id, video_analyzer, reward_manager):

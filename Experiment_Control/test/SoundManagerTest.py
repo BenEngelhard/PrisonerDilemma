@@ -1,6 +1,6 @@
 import os
 import time
-from SoundManager import *
+from Experiment_Control.SoundManager import *
 
 print(os.getcwd())
 Play(Sounds.Abort)

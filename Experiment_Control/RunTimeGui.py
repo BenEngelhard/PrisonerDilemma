@@ -1,9 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 
-from pandas.core.arrays import period_array
-
-
 class RunTimeGUI:
     def __init__(self):
         self.window = tk.Tk()

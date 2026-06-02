@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
-from modelling_opponent.OpponentType import OpponentType
-import Data_analysis.FileUtilities as fUtile
+from Experiment_Control.OpponentType import OpponentType
+import infrastructure.Data_analysis.FileUtilities as fUtile
 
 class ExperimentGUI:
     def __init__(self):

@@ -1,11 +1,11 @@
-from Experiment_Launcher_code.ModuleConfiguration import __USE_ARDUINO_SIM
+from infrastructure.ModuleConfiguration import __USE_ARDUINO_SIM
 
 if __USE_ARDUINO_SIM:
-    import Arduino_related_code.ArduinoDigitalSim as Arduino
+    import infrastructure.Arduino_related_code.ArduinoDigitalSim as Arduino
 else:
-    import Arduino_related_code.ArduinoDigital as Arduino
+    import infrastructure.Arduino_related_code.ArduinoDigital as Arduino
 
-from Arduino_related_code.ValveControl import ValveControl
+from infrastructure.Arduino_related_code.ValveControl import ValveControl
 
 class RewardManager:
     def __init__(self, comport, channels, rewards):

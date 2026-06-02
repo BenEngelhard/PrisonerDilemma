@@ -1,4 +1,4 @@
-from RunTimeGui import RunTimeGUI
+from Experiment_Control.RunTimeGui import RunTimeGUI
 import time
 import random
 

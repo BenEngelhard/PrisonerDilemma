@@ -1,4 +1,4 @@
-from Reward_manager.RewardManager import RewardManager
+from Experiment_Control.RewardManager import RewardManager
 import datetime
 
 # reward system configuration"
