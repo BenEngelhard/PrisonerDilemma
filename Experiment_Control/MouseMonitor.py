@@ -1,5 +1,5 @@
-from Video_analyser_code.locations import Locations
-from modelling_opponent.PrisonerABC import Prisoner
+from infrastructure.Video_analyser_code.locations import Locations
+from Experiment_Control.PrisonerABC import Prisoner
 
 class MouseMonitor(Prisoner):
     def __init__(self, mouse_id, video_analyzer, reward_manager):
@@ -30,8 +30,8 @@ class MouseMonitor(Prisoner):
     def DecisionAbort(self):
         pass
 
-    def DeliverReward(self, opponent_decision, reward_time):
-        self.reward_manager.deliver_reward(self.mouse_id, self.mouse_location, reward_time)
+    def DeliverReward(self, opponent_decision, scenario):
+        self.reward_manager.deliver_reward(self.mouse_id, scenario)
 
 
 

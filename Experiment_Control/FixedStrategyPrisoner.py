@@ -1,6 +1,6 @@
 import random
-from modelling_opponent.PrisonerABC import Prisoner
-from Video_analyser_code.locations import Locations
+from Experiment_Control.PrisonerABC import Prisoner
+from infrastructure.Video_analyser_code.locations import Locations
 
 
 class FixedStrategyPrisoner (Prisoner):
