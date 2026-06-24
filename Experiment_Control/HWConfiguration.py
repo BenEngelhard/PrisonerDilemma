@@ -253,6 +253,18 @@ class HWConfGUI:
                                    'water volume': self.M1_rewards[key].water_volume.get()}
                 m2_rewards[key] = {'opening time': self.M2_rewards[key].opening_time.get(),
                                    'water volume': self.M2_rewards[key].water_volume.get()}
+            cycle_bin = '50'     # parameters for the reward correction system. hard coded for now
+            m1_cycle_correction = {'CC': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'CD': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'DC': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'DD': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'CN': ['3', '6', '9', '12', '15', '18', '21', '24']}
+            m2_cycle_correction = {'CC': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'CD': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'DC': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'DD': ['3', '6', '9', '12', '15', '18', '21', '24'],
+                                   'CN': ['3', '6', '9', '12', '15', '18', '21', '24']}
+
             sys_par = {
                  'version': '1.0',
                  'Com Port': self.comport_name.get(),
@@ -261,6 +273,9 @@ class HWConfGUI:
                  'M2 valves': m2_valves,
                  'M1 Rewards': m1_rewards,
                  'M2 Rewards': m2_rewards,
+                 'Cycle bin': cycle_bin,
+                 'M1 Cycle Correction': m1_cycle_correction,
+                 'M2 Cycle Correction': m2_cycle_correction,
                  'Cal Iterations': self.iterations.get(),
                  'Scan Iterations': self.scan_iterations.get(),
                  'Scan Duration': self.scan_duration.get()
