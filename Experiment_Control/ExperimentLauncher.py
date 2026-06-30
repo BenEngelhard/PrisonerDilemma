@@ -46,7 +46,7 @@ def main():
             video_analyzer = Video_Analyzer()
             valve_channels = [sys_param['M1 valves'], sys_param['M2 valves']]
             rewards = [sys_param['M1 Rewards'], sys_param['M2 Rewards']]
-            correction_bin = sys_param['cycle_bin']
+            correction_bin = sys_param['Cycle bin']
             correction_values = [sys_param['M1 Cycle Correction'], sys_param['M2 Cycle Correction']]
             reward_manager = RewardManager(comport_name, valve_channels, rewards, correction_bin, correction_values)
 

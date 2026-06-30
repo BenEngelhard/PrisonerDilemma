@@ -165,13 +165,13 @@ class HWConfGUI:
                 self.heart_beat_channel.set(sys_conf.get('Heart Beat Channel'))
                 
                 for key in self.M1_Valves:
-                    self.M1_Valves[key].set(sys_conf.get('M1 valves')[key])
-                    self.M2_Valves[key].set(sys_conf.get('M2 valves')[key])
+                    self.M1_Valves[key].set(str(sys_conf.get('M1 valves')[key]))
+                    self.M2_Valves[key].set(str(sys_conf.get('M2 valves')[key]))
                 for key in self.M1_rewards:
-                    self.M1_rewards[key].opening_time.set(sys_conf.get('M1 Rewards').get(key)['opening time'])
-                    self.M1_rewards[key].water_volume.set(sys_conf.get('M1 Rewards').get(key)['water volume'])
-                    self.M2_rewards[key].opening_time.set(sys_conf.get('M2 Rewards').get(key)['opening time'])
-                    self.M2_rewards[key].water_volume.set(sys_conf.get('M2 Rewards').get(key)['water volume'])
+                    self.M1_rewards[key].opening_time.set(str(sys_conf.get('M1 Rewards').get(key)['opening time']))
+                    self.M1_rewards[key].water_volume.set(str(sys_conf.get('M1 Rewards').get(key)['water volume']))
+                    self.M2_rewards[key].opening_time.set(str(sys_conf.get('M2 Rewards').get(key)['opening time']))
+                    self.M2_rewards[key].water_volume.set(str(sys_conf.get('M2 Rewards').get(key)['water volume']))
                 self.iterations.set(sys_conf.get('Cal Iterations'))
                 self.scan_iterations.set(sys_conf.get('Scan Iterations'))
                 self.scan_duration.set(sys_conf.get('Scan Duration'))
@@ -246,25 +246,24 @@ class HWConfGUI:
             m1_rewards = {}
             m2_rewards = {}
             for key in self.M1_Valves:
-                m1_valves[key] = self.M1_Valves[key].get()
-                m2_valves[key] = self.M2_Valves[key].get()
+                m1_valves[key] = int(self.M1_Valves[key].get())
+                m2_valves[key] = int(self.M2_Valves[key].get())
             for key in self.M1_rewards:
-                m1_rewards[key] = {'opening time': self.M1_rewards[key].opening_time.get(),
-                                   'water volume': self.M1_rewards[key].water_volume.get()}
-                m2_rewards[key] = {'opening time': self.M2_rewards[key].opening_time.get(),
-                                   'water volume': self.M2_rewards[key].water_volume.get()}
-            cycle_bin = '50'     # parameters for the reward correction system. hard coded for now
-            m1_cycle_correction = {'CC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'CD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'DC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'DD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'CN': ['3', '6', '9', '12', '15', '18', '21', '24']}
-            m2_cycle_correction = {'CC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'CD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'DC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'DD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                                   'CN': ['3', '6', '9', '12', '15', '18', '21', '24']}
-
+                m1_rewards[key] = {'opening time': int(self.M1_rewards[key].opening_time.get()),
+                                   'water volume': int(self.M1_rewards[key].water_volume.get())}
+                m2_rewards[key] = {'opening time': int(self.M2_rewards[key].opening_time.get()),
+                                   'water volume': int(self.M2_rewards[key].water_volume.get())}
+            cycle_bin = 50     # parameters for the reward correction system. hard coded for now
+            m1_cycle_correction = {'CC': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'CD': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'DC': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'DD': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'CN': [3, 6, 9, 12, 15, 18, 21, 24]}
+            m2_cycle_correction = {'CC': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'CD': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'DC': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'DD': [3, 6, 9, 12, 15, 18, 21, 24],
+                                   'CN': [3, 6, 9, 12, 15, 18, 21, 24]}
             sys_par = {
                  'version': '1.0',
                  'Com Port': self.comport_name.get(),
@@ -287,25 +286,25 @@ class HWConfGUI:
         return {'version': '1.0',
                 'Com Port': 'COM11',
                 'Heart Beat Channel': '4',
-                'M1 valves': {'Coo': '1',
-                              'Cen': '1',
-                              'Def': '1'
+                'M1 valves': {'Coo': 1,
+                              'Cen': 1,
+                              'Def': 1
                               },
-                'M2 valves': {'Coo': '1',
-                              'Cen': '1',
-                              'Def': '1'
+                'M2 valves': {'Coo': 1,
+                              'Cen': 1,
+                              'Def': 1
                               },
-                'M1 Rewards': {'CC': {'opening time': '1', 'water volume': '12'},
-                               'CD': {'opening time': '1', 'water volume': '0'},
-                               'DC': {'opening time': '1', 'water volume': '16'},
-                               'DD': {'opening time': '1', 'water volume': '3'},
-                               'CN': {'opening time': '1', 'water volume': '2'}
+                'M1 Rewards': {'CC': {'opening time': 1, 'water volume': 12},
+                               'CD': {'opening time': 1, 'water volume': 0},
+                               'DC': {'opening time': 1, 'water volume': 16},
+                               'DD': {'opening time': 1, 'water volume': 3},
+                               'CN': {'opening time': 1, 'water volume': 2}
                                },
-                'M2 Rewards': {'CC': {'opening time': '1', 'water volume': '12'},
-                               'CD': {'opening time': '1', 'water volume': '16'},
-                               'DC': {'opening time': '1', 'water volume': '0'},
-                               'DD': {'opening time': '1', 'water volume': '3'},
-                               'CN': {'opening time': '1', 'water volume': '2'}
+                'M2 Rewards': {'CC': {'opening time': 1, 'water volume': 12},
+                               'CD': {'opening time': 1, 'water volume': 16},
+                               'DC': {'opening time': 1, 'water volume': 0},
+                               'DD': {'opening time': 1, 'water volume': 3},
+                               'CN': {'opening time': 1, 'water volume': 2}
                                },
                 'Cal Iterations': '25',
                 'Scan Iterations': '2',

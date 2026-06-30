@@ -12,7 +12,7 @@ class RewardManager:
     def __init__(self, comport, channels, rewards, corr_bin, corr_values):
         Arduino.openComPort(comport)
         self.rewards = rewards
-        self.correction_bin = int(corr_bin)
+        self.correction_bin = corr_bin
         self.correction_values = corr_values
         self.recipient_key = [{'CC': 'Coo',
                                'CD': 'Coo',
@@ -46,17 +46,17 @@ class RewardManager:
     def correct_opening_time(self, mouse_id, cycle_time, scenario, open_time):
         interpolation_index = int(cycle_time/self.correction_bin)
         if interpolation_index >= len(self.correction_values[mouse_id - 1][scenario]):
-            interpolation_index = len(self.correction_values[mouse_id - 1][scenario]) -1
+            interpolation_index = len(self.correction_values[mouse_id - 1][scenario]) - 1
+            prev_bin_correction = self.correction_values[mouse_id - 1][scenario][interpolation_index]
+        elif interpolation_index > 0:
+            prev_bin_correction = self.correction_values[mouse_id - 1][scenario][interpolation_index - 1]
+        else:
+            prev_bin_correction = 0
 
         # interpolate opening time
         bin_time = interpolation_index * self.correction_bin
         bin_offset = cycle_time - bin_time
         interpolation_ratio = bin_offset / self.correction_bin
-
-        if interpolation_index > 0:
-            prev_bin_correction = self.correction_values[mouse_id - 1][scenario][interpolation_index - 1]
-        else:
-            prev_bin_correction = 0
         bin_correction = self.correction_values[mouse_id - 1][scenario][interpolation_index] - prev_bin_correction
         correction_factor =  prev_bin_correction + bin_correction * interpolation_ratio
         open_time = int(open_time * (1 + correction_factor / 100)) #correction is given in percent

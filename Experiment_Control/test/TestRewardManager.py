@@ -20,7 +20,7 @@ rewards = [{'CC': {'opening time': 120, 'water volume': 12},
             'DD': {'opening time': 31, 'water volume': 3},
             'CN': {'opening time': 20, 'water volume': 3}}]
 
-cycle_bin = '50'     # parameters for the reward correction system. hard coded for now
+cycle_bin = 50     # parameters for the reward correction system. hard coded for now
 cycle_correction = [{'CC': [3, 6, 9, 12, 15, 18, 21, 24],
                      'CD': [0, 5, 10, 15, 20, 25, 30, 35],
                      'DC': [10, 10, 15, 15, 20, 20, 30, 30],
