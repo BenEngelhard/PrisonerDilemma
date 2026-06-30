@@ -2,35 +2,35 @@ from Experiment_Control.RewardManager import RewardManager
 import datetime
 
 # reward system configuration"
-recipients = [{'Coo': '1',
-               'Cen': '2',
-               'Def': '3'},
-              {'Coo': '4',
-               'Cen': '5',
-               'Def': '6'}]
+recipients = [{'Coo': 1,
+               'Cen': 2,
+               'Def': 3},
+              {'Coo': 4,
+               'Cen': 5,
+               'Def': 6}]
 
-rewards = [{'CC': {'opening time': '120', 'water volume': '12'},
-            'CD': {'opening time': '0', 'water volume': '0'},
-            'DC': {'opening time': '160', 'water volume': '16'},
-            'DD': {'opening time': '30', 'water volume': '12'},
-            'CN': {'opening time': '20', 'water volume': '2'}},
-           {'CC': {'opening time': '121', 'water volume': '13'},
-            'CD': {'opening time': '160', 'water volume': '16'},
-            'DC': {'opening time': '0', 'water volume': '0'},
-            'DD': {'opening time': '31', 'water volume': '3'},
-            'CN': {'opening time': '20', 'water volume': '3'}}]
+rewards = [{'CC': {'opening time': 120, 'water volume': 12},
+            'CD': {'opening time': 0, 'water volume': 0},
+            'DC': {'opening time': 160, 'water volume': 16},
+            'DD': {'opening time': 30, 'water volume': 12},
+            'CN': {'opening time': 20, 'water volume': 2}},
+           {'CC': {'opening time': 121, 'water volume': 13},
+            'CD': {'opening time': 160, 'water volume': 16},
+            'DC': {'opening time': 0, 'water volume': 0},
+            'DD': {'opening time': 31, 'water volume': 3},
+            'CN': {'opening time': 20, 'water volume': 3}}]
 
 cycle_bin = '50'     # parameters for the reward correction system. hard coded for now
-cycle_correction = [{'CC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'CD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'DC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'DD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'CN': ['3', '6', '9', '12', '15', '18', '21', '24']},
-                    {'CC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'CD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'DC': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'DD': ['3', '6', '9', '12', '15', '18', '21', '24'],
-                     'CN': ['3', '6', '9', '12', '15', '18', '21', '24']}]
+cycle_correction = [{'CC': [3, 6, 9, 12, 15, 18, 21, 24],
+                     'CD': [0, 5, 10, 15, 20, 25, 30, 35],
+                     'DC': [10, 10, 15, 15, 20, 20, 30, 30],
+                     'DD': [3, 6, 9, 12, 15, 18, 21, 24],
+                     'CN': [0, 5, 10, 15, 20, 25, 30, 35]},
+                    {'CC': [10, 10, 15, 15, 20, 20, 30, 30],
+                     'CD': [3, 6, 9, 12, 15, 18, 21, 24],
+                     'DC': [0, 5, 10, 15, 20, 25, 30, 35],
+                     'DD': [10, 10, 15, 15, 20, 20, 30, 30],
+                     'CN': [3, 6, 9, 12, 15, 18, 21, 24]}]
 
 opcode = -1
 comport = input("Comport: ")
