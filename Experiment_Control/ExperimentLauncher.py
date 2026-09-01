@@ -1,5 +1,6 @@
+__SOFTWARE_VERSION = 'V2.0 Detection Zone configuration'
+
 from infrastructure.ModuleConfiguration import __USE_VIDEO_SIM
-from infrastructure.ModuleConfiguration import __SOFTWARE_VERSION
 
 if __USE_VIDEO_SIM:
     from infrastructure.Video_analyser_code.VideoAnalyzerSim import Video_Analyzer
