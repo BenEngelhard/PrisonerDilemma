@@ -6,6 +6,7 @@ if __USE_VIDEO_SIM:
     from infrastructure.Video_analyser_code.VideoAnalyzerSim import Video_Analyzer
 else:
     from infrastructure.Video_analyser_code.VideoAnalyser import Video_Analyzer
+    from infrastructure.Video_analyser_code.ConfigureDetectionRegions import ConfigureDetectionRegions
 
 from Experiment_Control.MouseMonitor import MouseMonitor
 from Experiment_Control.FixedStrategyPrisoner import FixedStrategyPrisoner
@@ -31,6 +32,13 @@ def main():
             # after config window closes
             del config
             experiment_gui = ExperimentGUI()
+        elif experiment_gui.roi_configuration_selected():
+            del experiment_gui
+            config = ConfigureDetectionRegions(['m1_c', 'm1_cen', 'm1_d', 'm2_c', 'm2_cen', 'm2_d'])
+            config.configure()
+            # after config window closes
+            del config
+            experiment_gui = ExperimentGUI()
         else:
             gui_terminated = True
 
@@ -44,7 +52,8 @@ def main():
             write_configuration_file(experiment_parameters, opponent_configuration)
 
             # Instantiate software components
-            video_analyzer = Video_Analyzer()
+            regions = fUtile.load_detection_regions()
+            video_analyzer = Video_Analyzer(regions)
             valve_channels = [sys_param['M1 valves'], sys_param['M2 valves']]
             rewards = [sys_param['M1 Rewards'], sys_param['M2 Rewards']]
             correction_bin = sys_param['Cycle bin']
@@ -73,12 +82,13 @@ def main():
 
             # experiment manager terminated.
             del expManager
+            del video_analyzer
+            del reward_manager
 
         else:
             print('Wrong version of system parameter file. Plausibly a SW error. Call Micky :-)')
     else:
         print('Experiment was not started')
-
 
 def write_configuration_file(experiment_parameters, opponent_configuration):
     filepath = fUtile.get_file_path(0) + "_configuration.txt"
@@ -109,38 +119,6 @@ def write_opponent_configuration(file, configuration, who):
             file.write(f'{who} Opponent: Fixed Strategy: {configuration.get(ostrategy)}\n')
     else:
         file.write(f'{who} Opponent: Learner. \n')
-
-
-'''     #Anushka old data analysis code
-
-        data_file_path =fUtile.get_file_path(fUtile.FileType.EXPERIMENT_LOG, 1) + '.csv'  # Get the path of the logged data
-
-        data_analyzer = DataAnalyzer(data_file_path)
-        # Perform data analysis
-        analysis_results = data_analyzer.analyze_data()
-        # Save analysis results
-        data_analysis_file_path = fUtile.get_file_path(fUtile.FileType.DATA_ANALYSIS, 1) + '.csv'  # Get the path of the logged data
-        result_file_path = data_analyzer.save_results_to_file(analysis_results)
-
-
-        event_csv_path = fUtile.get_file_path(fUtile.FileType.EXPERIMENT_EVENT_LOG, 1) + '.csv'
-
-        ground_truth_directory="C:/Users/EngelHardBlab.MEDICINE/Downloads/PrisonerDilemmaPy_(4)/PrisonerDilemmaPy/Ground_Truth_Data/StrategyData"
-        comparator = EventComparator(ground_truth_directory, event_csv_path)
-        comparator.save_scores()
-        # Initialize DataAnalyzer with the file path
-
-
-        save_directory = fUtile.get_file_path(fUtile.FileType.DATA_ANALYSIS_PLOTS, 1) # Specify your custom save directory here
-
-        plotter = DataPlotter(data_file_path, save_directory)
-        plotter.load_data()
-        plotter.filter_completed_trials()
-        plotter.plot_decision_time()  # This will now save to the specified directory
-        plotter.plot_return_time()
-
-        print(f"Analysis results saved to {result_file_path}")       
-'''
 
 # Run the main function
 if __name__ == "__main__":

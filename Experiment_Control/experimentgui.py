@@ -48,7 +48,8 @@ class ExperimentGUI:
 
         # Control Variables
         self.start_button_clicked = False
-        self.config_button_clicked = False
+        self.hw_config_button_clicked = False
+        self.roi_config_button_clicked = False
 
     def setup_gui(self):
         # Entry fields for trials, duration, etc.
@@ -70,7 +71,11 @@ class ExperimentGUI:
 
         # Create a button to switch to HW configuration
         HWConfig_button = tk.Button(self.window, text="HW Configuration", command=self.hw_configuration)
-        HWConfig_button.place(x=430, y=575)
+        HWConfig_button.place(x=410, y=575)
+
+        # Create a button to switch to detection region configuration
+        ROIConfig_button = tk.Button(self.window, text="ROI Configuration", command=self.roi_configuration)
+        ROIConfig_button.place(x=30, y=575)
 
         self.project_directory_var.set(fUtile.get_project_directory())
         self.window.mainloop()
@@ -167,8 +172,14 @@ class ExperimentGUI:
 
     def hw_configuration(self):
         # stop GUI and mark hw configuration selected
-        self.config_button_clicked = True
+        self.hw_config_button_clicked = True
         messagebox.showinfo("HW Configuration", "Taking you to HW configuration")
+        self.window.destroy()
+
+    def roi_configuration(self):
+        # stop GUI and mark hw configuration selected
+        self.roi_config_button_clicked = True
+        messagebox.showinfo("ROI Configuration", "Taking you to detection region configuration")
         self.window.destroy()
 
     def validate_inputs(self):
@@ -271,7 +282,10 @@ class ExperimentGUI:
         return self.start_button_clicked
 
     def hw_configuration_selected(self):
-        return self.config_button_clicked
+        return self.hw_config_button_clicked
+
+    def roi_configuration_selected(self):
+        return self.roi_config_button_clicked
 
     def get_experiment_parameters(self):
         settings = {

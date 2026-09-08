@@ -299,6 +299,7 @@ class ExperimentManager:
         self.heartbeat.start(self.sessionStartTime)
         self.runTimeGui.StartMonitoring(self.experimentControl, self.stopExperiment)
         self.run_time_analysis.reset_analysis_timers()
+        self.videoAnalyser.close_resources()
 
     def experimentControl(self):
         Profiler.EnterMainLoop()
